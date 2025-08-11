@@ -1,0 +1,206 @@
+.upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: var(--space-xl);
+  backdrop-filter: blur(5px);
+}
+
+.upload-modal-content {
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  animation: modalFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.upload-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--white);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.upload-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.upload-body {
+  padding: var(--space-3xl);
+  text-align: center;
+}
+
+.spinner-large {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--space-xl);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.upload-text {
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2xl);
+  font-weight: 500;
+}
+
+.progress-container {
+  margin-bottom: var(--space-xl);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: var(--gray-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--radius-lg);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.upload-footer {
+  background-color: var(--gray-light);
+  padding: var(--space-xl) var(--space-3xl);
+  text-align: center;
+}
+
+.cancel-upload-btn {
+  background: var(--error);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.cancel-upload-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.cancel-upload-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .upload-modal-overlay {
+    padding: var(--space-lg);
+  }
+  
+  .upload-modal-content {
+    width: 95%;
+  }
+  
+  .upload-header {
+    padding: var(--space-xl);
+  }
+  
+  .upload-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .upload-body {
+    padding: var(--space-2xl);
+  }
+  
+  .upload-footer {
+    padding: var(--space-lg) var(--space-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-modal-overlay {
+    padding: var(--space-md);
+  }
+  
+  .upload-modal-content {
+    width: 100%;
+  }
+  
+  .upload-header {
+    padding: var(--space-lg);
+  }
+  
+  .upload-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .upload-body {
+    padding: var(--space-xl);
+  }
+  
+  .upload-text {
+    font-size: 1rem;
+  }
+  
+  .cancel-upload-btn {
+    width: 100%;
+    padding: var(--space-lg) var(--space-xl);
+  }
+}

@@ -1,0 +1,226 @@
+.drop-zone-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 450px;
+  padding: var(--space-2xl);
+}
+
+.drop-zone {
+  text-align: center;
+  padding: var(--space-3xl);
+  border: 3px dashed var(--gray);
+  border-radius: var(--space-xl);
+  background: var(--white);
+  max-width: 600px;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-zone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 42, 128, 0.02) 0%, rgba(122, 133, 193, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.drop-zone > * {
+  position: relative;
+  z-index: 1;
+}
+
+.drop-zone.hovering {
+  background-color: var(--header-bg);
+  border-color: var(--primary);
+  border-style: solid;
+  box-shadow: 0 8px 25px rgba(26, 42, 128, 0.15);
+  transform: scale(1.02) translateY(-5px);
+}
+
+.drop-zone.hovering::before {
+  opacity: 1;
+}
+
+.drop-zone.dragging {
+  background-color: #e8ecff;
+  border-color: var(--primary);
+  border-style: solid;
+  box-shadow: 0 12px 30px rgba(26, 42, 128, 0.25);
+  transform: scale(1.05) translateY(-10px);
+}
+
+.drop-zone.dragging::before {
+  opacity: 1;
+}
+
+.drop-zone h2 {
+  margin: var(--space-xl) 0 var(--space-lg);
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.drop-zone p {
+  margin-bottom: var(--space-2xl);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.icon {
+  margin-bottom: var(--space-lg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.drop-zone.hovering .icon {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.drop-zone.dragging .icon {
+  transform: translateY(-15px) scale(1.2);
+}
+
+.hint {
+  margin-top: var(--space-xl);
+  color: var(--text-lighter);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.error-message {
+  margin-top: var(--space-xl);
+  color: var(--error);
+  font-size: 0.95rem;
+  padding: var(--space-lg) var(--space-xl);
+  background-color: var(--error-bg);
+  border-radius: var(--radius-lg);
+  display: inline-block;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 1024px) {
+  .modal-content {
+    padding: var(--space-2xl);
+    max-width: 450px;
+  }
+  
+  .drop-zone-container {
+    min-height: 400px;
+    padding: var(--space-xl);
+  }
+  
+  .drop-zone {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: var(--space-lg);
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: var(--space-xl);
+  }
+  
+  .modal-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .cancel-btn,
+  .confirm-btn {
+    width: 100%;
+    padding: var(--space-md) var(--space-xl);
+  }
+  
+  .drop-zone-container {
+    min-height: 350px;
+    padding: var(--space-lg);
+  }
+  
+  .drop-zone {
+    padding: var(--space-2xl);
+    max-width: 100%;
+  }
+  
+  .drop-zone h2 {
+    font-size: 1.5rem;
+  }
+  
+  .drop-zone p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: var(--space-md);
+  }
+  
+  .modal-content {
+    width: 100%;
+    padding: var(--space-lg);
+  }
+  
+  .modal-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .project-input {
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .form-actions {
+    margin-top: var(--space-lg);
+  }
+  
+  .drop-zone-container {
+    min-height: 300px;
+    padding: var(--space-md);
+  }
+  
+  .drop-zone {
+    padding: var(--space-xl);
+  }
+  
+  .drop-zone h2 {
+    font-size: 1.3rem;
+    margin: var(--space-lg) 0 var(--space-md);
+  }
+  
+  .drop-zone p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .hint {
+    font-size: 0.8rem;
+  }
+  
+  .error-message {
+    font-size: 0.85rem;
+    padding: var(--space-md) var(--space-lg);
+  }
+}
